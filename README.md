@@ -7,16 +7,12 @@
 [![Multi-Provider](https://img.shields.io/badge/Providers-Antigravity%20%7C%20Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20Gemini%20CLI%20%7C%20OpenCode-purple.svg)](#installation)
 
 <p align="center">
-  <img src="assets/contract-first-infographic.gif" alt="Why Contract-First Beats Prompting — animated radial-hub architecture infographic" width="680">
+  <img src="assets/contract-first-hero.gif" alt="Contract First — Specs that bite back (hand-drawn architecture workflow)" width="100%">
 </p>
 
 ---
 
 ## Why This Exists
-
-<p align="center">
-  <img src="assets/why-contract-first.svg" alt="Contract First vs. Prompt-Only Skills — side-by-side comparison" width="100%">
-</p>
 
 When most of your code is written by AI agents, a constraint that lives only in your head—or in a paragraph an agent is *supposed* to remember—**is not a constraint**.
 
