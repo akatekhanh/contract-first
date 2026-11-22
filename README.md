@@ -120,7 +120,7 @@ Once installed, trigger it naturally in any session:
 ## Multi-Agent & Multi-Model Fan-Out
 
 <p align="center">
-  <img src="assets/multi-provider.svg" alt="One Repo, Every Harness and Model — multi-provider and multi-model orchestration" width="100%">
+  <img src="assets/multi-provider.gif" alt="Multi-Provider & Multi-Model — one repo, six harnesses, three model tiers, one shared contract gate (hand-drawn sketchbook diagram)" width="100%">
 </p>
 
 The `ownership` table in `contracts/architecture.yaml` acts as a second contract when fanning work out across parallel agents or mixed model families:
