@@ -14,12 +14,18 @@ The `ownership` table in `architecture.yaml` is the second contract: each file h
 
 **The golden rule: an agent that finds the contract wrong REPORTS it — it does not edit it.** If anyone may edit the contract, the contract becomes a scratchpad and the whole pattern collapses.
 
-## Matching work to model tier
+## Matching work to model tier (multi-provider / multi-model)
 
-- Lookup / "where is X" → a small read-only agent.
-- Implementing one layer against a settled contract → mid tier.
-- Changing the contract or making a design decision → the strongest model available.
-- Review / verification → **a separate agent**. Whoever just wrote the code is the worst possible reviewer of it.
+The contract is model-agnostic: any provider or mixed-model swarm works as long as each role gets an appropriate reasoning tier and stays inside its owned files.
+
+| Work type | Role | Model tier | Examples across providers |
+|---|---|---|---|
+| Lookup / "where is X" / read-only audit | `RESEARCH` | Fast / lightweight | Gemini Flash / Flash-Lite · Claude Haiku · GPT-5 mini / o4-mini |
+| Implementing one layer against a settled contract | `AGENT-DOMAIN`, `AGENT-ADAPTER`, `AGENT-API`, `AGENT-FE` | Mid / balanced | Gemini Pro · Claude Sonnet · GPT-5 / Codex |
+| Changing the contract, state machine, or an ADR | `ARCHITECT` | Frontier / high-reasoning | Gemini Pro / Neon (High) · Claude Opus · GPT-5 (high reasoning) |
+| Diff review / contract verification | `REVIEWER` | **Separate agent** (different session or different model family) | Cross-model review (e.g., Gemini writes, Claude reviews — or vice versa) |
+
+**Rule of thumb for review:** Whoever just wrote the code is the worst possible reviewer of it. Using a separate agent—or a different model family—catches blind spots that self-review misses.
 
 ## Sequencing a feature across agents
 

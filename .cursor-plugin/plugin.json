@@ -1,0 +1,23 @@
+{
+  "name": "contract-first",
+  "displayName": "Contract First",
+  "description": "Specs that bite back — scaffold and enforce machine-checkable YAML contracts, file ownership boundaries, and spec↔code guard tests.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Quoc Khanh",
+    "url": "https://github.com/akatekhanh"
+  },
+  "homepage": "https://github.com/akatekhanh/contract-first",
+  "repository": "https://github.com/akatekhanh/contract-first",
+  "license": "MIT",
+  "keywords": [
+    "contract-first",
+    "spec-driven-development",
+    "openapi",
+    "multi-agent",
+    "guard-tests",
+    "architecture",
+    "adr"
+  ],
+  "skills": "./skills/"
+}

@@ -1,10 +1,10 @@
 # Contract First — Specs That Bite Back
 
-> **An AI coding agent skill that scaffolds machine-checkable YAML contracts, file ownership boundaries, and spec↔code guard tests so multi-agent codebases never drift.**
+> **A multi-provider, multi-model AI agent skill that scaffolds machine-checkable YAML contracts, file ownership boundaries, and spec↔code guard tests so coding agents never drift.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3 Stdlib Only](https://img.shields.io/badge/Scripts-Python%203%20Stdlib%20Only-green.svg)](scripts/)
-[![Works with](https://img.shields.io/badge/Works%20with-Claude%20Code%20%7C%20Antigravity%20%7C%20Codex%20%7C%20Cursor-purple.svg)](#install)
+[![Python 3 Stdlib Only](https://img.shields.io/badge/Scripts-Python%203%20Stdlib%20Only-green.svg)](skills/contract-first/scripts/)
+[![Multi-Provider](https://img.shields.io/badge/Providers-Antigravity%20%7C%20Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20Gemini%20CLI%20%7C%20OpenCode-purple.svg)](#installation)
 
 ---
 
@@ -30,32 +30,72 @@ When most of your code is written by AI agents, a constraint that lives only in 
 
 ---
 
-## Install
+## Installation
 
-### Quick install (recommended)
+Structured for native discovery across every major AI coding harness (inspired by [`obra/superpowers`](https://github.com/obra/superpowers)):
+
+### Universal (`npx skills`)
 
 ```bash
 npx skills add akatekhanh/contract-first
 ```
 
-### Manual install (Antigravity `agy` / Claude Code / Codex / Cursor)
+### Antigravity (`agy`)
 
 ```bash
-# Global shared skills directory (~/.agents/skills)
-git clone https://github.com/akatekhanh/contract-first.git ~/.agents/skills/contract-first
+agy plugin install https://github.com/akatekhanh/contract-first
+```
+*(Uses `.antigravity-plugin/plugin.json` and ingests `skills/contract-first/` automatically.)*
 
-# Or for Claude Code specifically
-git clone https://github.com/akatekhanh/contract-first.git ~/.claude/skills/contract-first
+### Claude Code
+
+Inside Claude Code:
+```text
+/plugin marketplace add akatekhanh/contract-first
+/plugin install contract-first@contract-first-dev
+```
+*(Uses `.claude-plugin/marketplace.json` + `.claude-plugin/plugin.json`.)*
+
+### OpenAI Codex CLI / App
+
+```bash
+# Via universal .agents/plugins marketplace or direct skill clone:
+git clone https://github.com/akatekhanh/contract-first.git /tmp/contract-first \
+  && cp -R /tmp/contract-first/skills/contract-first ~/.codex/skills/contract-first \
+  && rm -rf /tmp/contract-first
+```
+*(Includes `.codex-plugin/plugin.json` and `.agents/plugins/marketplace.json`.)*
+
+### Cursor
+
+Install from repository URL using `.cursor-plugin/plugin.json` (`"skills": "./skills/"`), or clone `skills/contract-first` into `.cursor/skills/`.
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/akatekhanh/contract-first
+```
+*(Uses `gemini-extension.json` + `GEMINI.md`.)*
+
+### OpenCode / Hermes / Other Harnesses
+
+Point your harness at `AGENTS.md` or copy `skills/contract-first/` into your shared `~/.agents/skills/` directory:
+
+```bash
+git clone https://github.com/akatekhanh/contract-first.git /tmp/contract-first \
+  && mkdir -p ~/.agents/skills \
+  && cp -R /tmp/contract-first/skills/contract-first ~/.agents/skills/contract-first \
+  && rm -rf /tmp/contract-first
 ```
 
-Once installed, trigger it naturally in any coding agent session:
+Once installed, trigger it naturally in any session:
 - *"Set up contract-first for this repo"*
 - *"Scaffold the contracts before we start coding"*
 - *"Audit this repo with contract-first and find spec↔code drift"*
 
 ---
 
-## What Gets Scaffolded
+## What Gets Scaffolded in Your Project
 
 ```text
 <your-repo>/
@@ -73,6 +113,21 @@ Once installed, trigger it naturally in any coding agent session:
 
 ---
 
+## Multi-Agent & Multi-Model Fan-Out
+
+The `ownership` table in `contracts/architecture.yaml` acts as a second contract when fanning work out across parallel agents or mixed model families:
+
+| Role | Owns | Recommended Model Tier | Examples (Multi-Provider) |
+|---|---|---|---|
+| `ARCHITECT` | `contracts/`, entities, ports/interfaces, shared signatures | Frontier / high-reasoning | Claude Opus · Gemini Pro / Neon · GPT-5 (high) |
+| `AGENT-DOMAIN` / `ADAPTER` / `API` / `FE` | One implementation layer inside owned files | Mid / balanced | Claude Sonnet · Gemini Pro · GPT-5 / Codex |
+| `RESEARCH` | Read-only lookup & repo exploration | Fast / lightweight | Claude Haiku · Gemini Flash · GPT-5 mini |
+| `REVIEWER` | Diff vs. contract verification | **Separate agent / cross-model** | Pair different families (e.g., Gemini writes, Claude reviews) |
+
+See [`skills/contract-first/references/multi-agent-ownership.md`](skills/contract-first/references/multi-agent-ownership.md) for the full sequencing protocol.
+
+---
+
 ## CLI Scripts (Zero External Dependencies)
 
 Both helper scripts use **Python 3 standard library only** and are CI-ready (`exit 0` clean, `exit 1` findings/skipped, `exit 2` error).
@@ -80,17 +135,17 @@ Both helper scripts use **Python 3 standard library only** and are CI-ready (`ex
 ### 1. Scaffold a new contract bundle
 
 ```bash
-python3 scripts/scaffold_contracts.py /path/to/repo --name "My App" --date 2026-11-22
+python3 skills/contract-first/scripts/scaffold_contracts.py /path/to/repo --name "My App" --date 2026-11-22
 # Preview without writing:
-python3 scripts/scaffold_contracts.py /path/to/repo --name "My App" --dry-run
+python3 skills/contract-first/scripts/scaffold_contracts.py /path/to/repo --name "My App" --dry-run
 ```
 
 ### 2. Audit an existing repo for contract defects
 
 ```bash
-python3 scripts/contract_audit.py /path/to/repo --format text
+python3 skills/contract-first/scripts/contract_audit.py /path/to/repo --format text
 # CI mode (file:line:severity:message, hard failures only):
-python3 scripts/contract_audit.py /path/to/repo --severity HIGH
+python3 skills/contract-first/scripts/contract_audit.py /path/to/repo --severity HIGH
 ```
 
 What `contract_audit.py` catches automatically:
@@ -106,29 +161,24 @@ What `contract_audit.py` catches automatically:
 
 ---
 
-## Multi-Agent Fan-Out
+## Repository Structure
 
-The `ownership` table in `contracts/architecture.yaml` acts as a second contract when running parallel agents:
-
-| Role | Owns | Must Not |
-|---|---|---|
-| `ARCHITECT` | `contracts/`, entities, ports/interfaces, shared signatures | — |
-| `AGENT-DOMAIN` | Pure domain logic + unit tests | Import frameworks or change shared signatures |
-| `AGENT-ADAPTER` | Port implementations, DDL/migrations | Touch domain or contracts |
-| `AGENT-API` | Routes matching `openapi.yaml`, DI wiring | Add endpoints outside the contract |
-| `AGENT-FE` | UI + generated types from OpenAPI | Invent strings outside `business-spec.yaml#copy` |
-
----
-
-## Deep-Dive References
-
-Progressive disclosure keeps agent context lean—detailed guides live in [`references/`](references/):
-
-- [`references/business-spec.md`](references/business-spec.md) — Actors, identity, state machines, flows, SLA, errors, shared copy, selective acceptance criteria
-- [`references/openapi-contract.md`](references/openapi-contract.md) — OpenAPI 3.1 rules, discriminator mappings, Problem shape, `x-planned-operations`
-- [`references/architecture-adr.md`](references/architecture-adr.md) — `architecture.yaml`, ADR vs. blocker vs. spike, `deploy-plan.yaml`
-- [`references/enforcement-tests.md`](references/enforcement-tests.md) — Strict YAML loader, implicit-typing traps, AC markers, guard verification
-- [`references/multi-agent-ownership.md`](references/multi-agent-ownership.md) — Role boundaries, model-tier routing, parallel feature sequencing
+```text
+contract-first/
+├── .antigravity-plugin/plugin.json    # Antigravity (agy) native plugin
+├── .claude-plugin/                    # Claude Code plugin + marketplace
+├── .codex-plugin/plugin.json          # Codex CLI / App plugin
+├── .cursor-plugin/plugin.json         # Cursor plugin
+├── .agents/plugins/marketplace.json   # Universal .agents marketplace
+├── gemini-extension.json + GEMINI.md  # Gemini CLI extension
+├── AGENTS.md                          # Universal agent entry point
+├── skills/contract-first/
+│   ├── SKILL.md                       # Core skill instructions
+│   ├── references/                    # Progressive-disclosure deep guides
+│   └── scripts/                       # Zero-dependency scaffold + audit CLIs
+├── tests/test_skill_layout.py         # Manifest sync, layout & script smoke tests
+└── .github/workflows/ci.yml           # Automated CI verification
+```
 
 ---
 

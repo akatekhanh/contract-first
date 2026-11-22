@@ -1,0 +1,6 @@
+{
+  "name": "contract-first",
+  "description": "Specs that bite back — scaffold and enforce machine-checkable YAML contracts, file ownership boundaries, and spec↔code guard tests.",
+  "version": "1.0.0",
+  "contextFileName": "GEMINI.md"
+}
