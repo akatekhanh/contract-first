@@ -6,6 +6,10 @@
 [![Python 3 Stdlib Only](https://img.shields.io/badge/Scripts-Python%203%20Stdlib%20Only-green.svg)](skills/contract-first/scripts/)
 [![Multi-Provider](https://img.shields.io/badge/Providers-Antigravity%20%7C%20Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20Gemini%20CLI%20%7C%20OpenCode-purple.svg)](#installation)
 
+<p align="center">
+  <img src="assets/why-contract-first.svg" alt="Contract First vs. Prompt-Only Skills — animated workflow comparison" width="100%">
+</p>
+
 ---
 
 ## Why This Exists
@@ -114,6 +118,10 @@ Once installed, trigger it naturally in any session:
 ---
 
 ## Multi-Agent & Multi-Model Fan-Out
+
+<p align="center">
+  <img src="assets/multi-provider.svg" alt="One Repo, Every Harness and Model — multi-provider and multi-model orchestration" width="100%">
+</p>
 
 The `ownership` table in `contracts/architecture.yaml` acts as a second contract when fanning work out across parallel agents or mixed model families:
 

@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 690" width="1240" height="690" role="img" aria-label="Contract First vs. Prompt-Only Skills">
+  
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .title { font-size: 24px; font-weight: 700; fill: #2d3142; }
+      .subtitle { font-size: 13px; font-weight: 400; fill: #7a8399; }
+      .eyebrow-muted { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; fill: #7a8399; }
+      .eyebrow-accent { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; fill: #eb6c36; }
+      .node-title { font-size: 13.5px; font-weight: 600; fill: #2d3142; }
+      .node-sub { font-size: 12px; font-weight: 400; fill: #4f5d75; }
+      .node-title-inv { font-size: 14px; font-weight: 700; fill: #ffffff; }
+      .node-sub-inv { font-size: 12px; font-weight: 400; fill: #cbd5e1; }
+
+      @keyframes dashFlow {
+        to { stroke-dashoffset: -24; }
+      }
+      @keyframes softPulse {
+        0%, 100% { stroke-opacity: 0.55; stroke-width: 2.2; }
+        50% { stroke-opacity: 1; stroke-width: 3.2; }
+      }
+      @keyframes softGlow {
+        0%, 100% { filter: drop-shadow(0 0 0px rgba(235, 108, 54, 0)); }
+        50% { filter: drop-shadow(0 0 8px rgba(235, 108, 54, 0.35)); }
+      }
+      @keyframes subtleWobble {
+        0%, 100% { transform: translateX(0px); }
+        25% { transform: translateX(-1.5px); }
+        75% { transform: translateX(1.5px); }
+      }
+      .flow-dash { stroke-dasharray: 6 6; animation: dashFlow 1.4s linear infinite; }
+      .flow-dash-accent { stroke-dasharray: 7 5; animation: dashFlow 1.1s linear infinite; }
+      .gate-pulse { animation: softPulse 2.4s ease-in-out infinite; }
+      .ssot-glow { animation: softGlow 3s ease-in-out infinite; }
+      .drift-wobble { animation: subtleWobble 2.8s ease-in-out infinite; }
+    </style>
+
+  
+    <defs>
+      <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 1 1.5 L 8.5 5 L 1 8.5 z" fill="#7a8399"/>
+      </marker>
+      <marker id="arr-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 1 1.5 L 8.5 5 L 1 8.5 z" fill="#4f5d75"/>
+      </marker>
+      <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 1 1.5 L 8.5 5 L 1 8.5 z" fill="#2d3142"/>
+      </marker>
+      <marker id="arr-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 1 1.5 L 8.5 5 L 1 8.5 z" fill="#eb6c36"/>
+      </marker>
+    </defs>
+
+  <!-- Editorial paper canvas -->
+  <rect x="0" y="0" width="1240" height="690" rx="16" fill="#f5f5f5"/>
+
+  <!-- Header -->
+  <text x="40" y="48" class="sans title">Contract First vs. Prompt-Only Skills</text>
+  <text x="40" y="72" class="sans subtitle">Why executable specs stop AI agents from drifting</text>
+
+  <!-- LEFT FRAME: Other Skills -->
+  <rect x="40" y="100" width="340" height="556" rx="10" fill="none" stroke="#bfc0c0" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="210" y="128" text-anchor="middle" class="sans eyebrow-muted">OTHER SKILLS · PROMPT-ONLY</text>
+
+  <!-- Left nodes -->
+  <rect x="70" y="168" width="280" height="84" rx="10" fill="#ffffff" stroke="#bfc0c0" stroke-width="1.5"/>
+  <text x="210" y="205" text-anchor="middle" class="sans node-title">Markdown &amp; Prompts</text>
+  <text x="210" y="226" text-anchor="middle" class="mono node-sub">CLAUDE.md · docs · TODOs</text>
+
+  <rect x="70" y="320" width="280" height="84" rx="10" fill="#ffffff" stroke="#bfc0c0" stroke-width="1.5"/>
+  <text x="210" y="357" text-anchor="middle" class="sans node-title">Agents Guess &amp; Collide</text>
+  <text x="210" y="378" text-anchor="middle" class="sans node-sub">No file ownership · Rules forgotten</text>
+
+  <g class="drift-wobble">
+    <rect x="70" y="472" width="280" height="90" rx="10" fill="#ececec" stroke="#4f5d75" stroke-width="2"/>
+    <text x="210" y="512" text-anchor="middle" class="sans node-title" font-weight="700">Silent Drift</text>
+    <text x="210" y="534" text-anchor="middle" class="sans node-sub">Orphan enums · Stale docs</text>
+  </g>
+
+  <!-- Left dashed animated arrows -->
+  <path d="M 210 252 L 210 315" fill="none" stroke="#7a8399" stroke-width="1.8" class="flow-dash" marker-end="url(#arr-muted)"/>
+  <path d="M 210 404 L 210 467" fill="none" stroke="#7a8399" stroke-width="1.8" class="flow-dash" marker-end="url(#arr-muted)"/>
+
+  <!-- RIGHT FRAME: Contract First -->
+  <rect x="420" y="100" width="780" height="556" rx="10" fill="none" stroke="#2d3142" stroke-width="1.5"/>
+  <text x="810" y="128" text-anchor="middle" class="sans eyebrow-accent">CONTRACT FIRST · SPECS THAT BITE BACK</text>
+
+  <!-- Row 1: SSOT YAML bundle (single accent + subtle glow) -->
+  <g class="ssot-glow">
+    <rect x="446" y="168" width="212" height="84" rx="10" fill="#fff4ee" stroke="#eb6c36" stroke-width="2"/>
+    <text x="552" y="204" text-anchor="middle" class="mono node-title" font-size="12">1. business-spec.yaml</text>
+    <text x="552" y="226" text-anchor="middle" class="sans node-sub">Domain · States · AC</text>
+
+    <rect x="704" y="168" width="212" height="84" rx="10" fill="#fff4ee" stroke="#eb6c36" stroke-width="2"/>
+    <text x="810" y="204" text-anchor="middle" class="mono node-title" font-size="12">2. openapi.yaml</text>
+    <text x="810" y="226" text-anchor="middle" class="sans node-sub">API · Schemas · Enums</text>
+
+    <rect x="962" y="168" width="212" height="84" rx="10" fill="#fff4ee" stroke="#eb6c36" stroke-width="2"/>
+    <text x="1068" y="204" text-anchor="middle" class="mono node-title" font-size="12">3. architecture.yaml</text>
+    <text x="1068" y="226" text-anchor="middle" class="sans node-sub">Ownership · ADRs</text>
+  </g>
+
+  <!-- Row 2: Parallel owned agents -->
+  <rect x="446" y="316" width="212" height="76" rx="10" fill="#ffffff" stroke="#2d3142" stroke-width="1.5"/>
+  <text x="552" y="349" text-anchor="middle" class="sans node-title">Architect</text>
+  <text x="552" y="370" text-anchor="middle" class="sans node-sub">Owns contracts/ only</text>
+
+  <rect x="704" y="316" width="212" height="76" rx="10" fill="#ffffff" stroke="#2d3142" stroke-width="1.5"/>
+  <text x="810" y="349" text-anchor="middle" class="sans node-title">Parallel Builders</text>
+  <text x="810" y="370" text-anchor="middle" class="sans node-sub">1 owner per file</text>
+
+  <rect x="962" y="316" width="212" height="76" rx="10" fill="#ffffff" stroke="#2d3142" stroke-width="1.5"/>
+  <text x="1068" y="349" text-anchor="middle" class="sans node-title">Reviewer</text>
+  <text x="1068" y="370" text-anchor="middle" class="sans node-sub">Cross-model diff check</text>
+
+  <!-- Row 3: Guard Gate -->
+  <rect x="446" y="446" width="728" height="76" rx="10" fill="#2d3142" stroke="#eb6c36" stroke-width="2.5" class="gate-pulse"/>
+  <text x="810" y="479" text-anchor="middle" class="sans node-title-inv">Guard Gate · test_spec.py + contract_audit.py</text>
+  <text x="810" y="501" text-anchor="middle" class="sans node-sub-inv">Blocks drift, orphan enums &amp; open ADRs before merge</text>
+
+  <!-- Row 4: PASS / FAIL -->
+  <rect x="446" y="568" width="348" height="66" rx="10" fill="#ffffff" stroke="#2d3142" stroke-width="2"/>
+  <text x="620" y="596" text-anchor="middle" class="sans node-title" font-weight="700">PASS → Zero-Drift Ship</text>
+  <text x="620" y="616" text-anchor="middle" class="sans node-sub">Spec + Code + Tests in 1 commit</text>
+
+  <rect x="826" y="568" width="348" height="66" rx="10" fill="#fff4ee" stroke="#eb6c36" stroke-width="2"/>
+  <text x="1000" y="596" text-anchor="middle" class="sans node-title" font-weight="700">FAIL → Report, Never Edit</text>
+  <text x="1000" y="616" text-anchor="middle" class="sans node-sub">Escalate spec fixes to Architect</text>
+
+  <!-- Right connectors -->
+  <path d="M 658 210 L 699 210" fill="none" stroke="#eb6c36" stroke-width="2" marker-end="url(#arr-accent)"/>
+  <path d="M 916 210 L 957 210" fill="none" stroke="#eb6c36" stroke-width="2" marker-end="url(#arr-accent)"/>
+
+  <path d="M 552 252 L 552 311" fill="none" stroke="#4f5d75" stroke-width="1.8" marker-end="url(#arr-slate)"/>
+  <path d="M 810 252 L 810 311" fill="none" stroke="#4f5d75" stroke-width="1.8" marker-end="url(#arr-slate)"/>
+  <path d="M 1068 252 L 1068 311" fill="none" stroke="#4f5d75" stroke-width="1.8" marker-end="url(#arr-slate)"/>
+
+  <path d="M 552 392 L 552 441" fill="none" stroke="#2d3142" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+  <path d="M 810 392 L 810 441" fill="none" stroke="#2d3142" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+  <path d="M 1068 392 L 1068 441" fill="none" stroke="#2d3142" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+  <path d="M 620 522 L 620 563" fill="none" stroke="#2d3142" stroke-width="2" marker-end="url(#arr-ink)"/>
+  <path d="M 1000 522 L 1000 563" fill="none" stroke="#eb6c36" stroke-width="2" class="flow-dash-accent" marker-end="url(#arr-accent)"/>
+
+  <!-- Animated flow particles -->
+  <circle r="3.2" fill="#eb6c36" opacity="0.9">
+      <animateMotion dur="1.4s" begin="0s" repeatCount="indefinite" path="M 658 210 L 702 210"/>
+    </circle>
+    <circle r="3.2" fill="#eb6c36" opacity="0.9">
+      <animateMotion dur="1.4s" begin="0.4s" repeatCount="indefinite" path="M 916 210 L 960 210"/>
+    </circle>
+    <circle r="3.2" fill="#4f5d75" opacity="0.9">
+      <animateMotion dur="1.6s" begin="0.1s" repeatCount="indefinite" path="M 552 252 L 552 314"/>
+    </circle>
+    <circle r="3.2" fill="#4f5d75" opacity="0.9">
+      <animateMotion dur="1.6s" begin="0.5s" repeatCount="indefinite" path="M 810 252 L 810 314"/>
+    </circle>
+    <circle r="3.2" fill="#4f5d75" opacity="0.9">
+      <animateMotion dur="1.6s" begin="0.9s" repeatCount="indefinite" path="M 1068 252 L 1068 314"/>
+    </circle>
+    <circle r="3.2" fill="#2d3142" opacity="0.9">
+      <animateMotion dur="1.5s" begin="0.2s" repeatCount="indefinite" path="M 552 392 L 552 444"/>
+    </circle>
+    <circle r="3.2" fill="#2d3142" opacity="0.9">
+      <animateMotion dur="1.5s" begin="0.6s" repeatCount="indefinite" path="M 810 392 L 810 444"/>
+    </circle>
+    <circle r="3.2" fill="#2d3142" opacity="0.9">
+      <animateMotion dur="1.5s" begin="1.0s" repeatCount="indefinite" path="M 1068 392 L 1068 444"/>
+    </circle>
+    <circle r="3.2" fill="#2d3142" opacity="0.9">
+      <animateMotion dur="1.4s" begin="0.3s" repeatCount="indefinite" path="M 620 522 L 620 566"/>
+    </circle>
+</svg>
